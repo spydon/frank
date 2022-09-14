@@ -2,7 +2,7 @@
     "name": "frank",
     "version": "1.0.0",
     "description": "Tell you what lunch that will be served at Sabis.",
-    "author": "Generated using Microsoft Bot Builder Yeoman generator v4.17.0",
+    "author": "Lukas Klingsbo",
     "license": "MIT",
     "main": "./lib/index.js",
     "scripts": {
@@ -15,7 +15,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com"
+        "url": "https://github.com/spydon/frank"
     },
     "dependencies": {
         "botbuilder": "~4.15.0",

@@ -22,12 +22,11 @@ import {
 // This bot's main dialog.
 import { EchoBot as FrankBot } from './bot';
 
-
 // Create HTTP server.
 const server = restify.createServer();
 server.use(restify.plugins.bodyParser());
 
-server.listen(process.env.port || process.env.PORT || 3978, () => {
+server.listen(process.env.PORT || process.env.port || 3978, () => {
     console.log(`\n${server.name} listening to ${server.url}`);
     console.log('\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator');
     console.log('\nTo talk to your bot, open the emulator select "Open Bot"');
@@ -71,6 +70,12 @@ adapter.onTurnError = onTurnErrorHandler;
 
 // Create the main dialog.
 const myBot = new FrankBot();
+
+// Listen for incoming requests on root.
+ server.get('/', function (req, res, next) {
+    res.send({ body: 'I am alive.' });
+    next();
+ });
 
 // Listen for incoming requests.
 server.post('/api/messages', async (req, res) => {
