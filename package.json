@@ -1,7 +1,7 @@
 {
     "name": "frank",
     "version": "1.0.0",
-    "description": "Tell you what lunch that will be served at Sabis.",
+    "description": "This bot tells you what lunch that will be served at Sabis.",
     "author": "Lukas Klingsbo",
     "license": "MIT",
     "main": "./lib/index.js",
@@ -9,7 +9,7 @@
         "build": "./node_modules/typescript/bin/tsc --build",
         "lint": "tslint -c tslint.json 'src/**/*.ts'",
         "postinstall": "npm run build && node ./deploymentScripts/webConfigPrep.js",
-        "start": "tsc --build && node ./lib/index.js",
+        "start": "./node_modules/typescript/bin/tsc --build && node ./lib/index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "watch": "nodemon --watch ./src -e ts --exec \"npm run start\""
     },
