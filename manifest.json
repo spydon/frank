@@ -1,0 +1,85 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.14",
+    "version": "1.0.0",
+    "id": "%MICROSOFT-APP-ID%",
+    "packageName": "fyi.lukas.frank",
+    "localizationInfo": {
+        "defaultLanguageTag": "sv-se"
+    },
+    "developer": {
+        "name": "Lukas Klingsbo",
+        "websiteUrl": "https://lukas.fyi/",
+        "privacyUrl": "https://lukas.fyi/",
+        "termsOfUseUrl": "https://lukas.fyi/",
+    },
+    "name": {
+        "short": "Frank",
+        "full": "Frank - The lunch bot"
+    },
+    "description": {
+        "short": "Frank will tell you what lunch that is served in Sabis.",
+        "full": "Frank will tell you what lunch that is served in Sabis today and tomorrow."
+    },
+    "icons": {
+        "outline": "frank_transparent.png",
+        "color": "frank.png"
+    },
+    "accentColor": "#33c7ff",
+    "bots": [
+        {
+            "botId": "%MICROSOFT-APP-ID-REGISTERED-WITH-BOT-FRAMEWORK%",
+            "scopes": [
+                "team",
+                "personal",
+                "groupchat"
+            ],
+            "needsChannelSelector": false,
+            "isNotificationOnly": false,
+            "supportsFiles": true,
+            "supportsCalling": false,
+            "supportsVideo": true,
+            "commandLists": [
+                {
+                    "scopes": [
+                        "team",
+                        "groupchat",
+                        "personal"
+                    ],
+                    "commands": [
+                        {
+                            "title": "Lunch?",
+                            "description": "Vad för lunch som serveras idag."
+                        },
+                        {
+                            "title": "Lunch imorgon?",
+                            "description": "Vad för lunch som serveras imorgon."
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "validDomains": [
+        "frank-lunch.azurewebsites.net"
+    ],
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "type": "Application",
+                    "name": "ChannelSettings.Read.Group"
+                },
+                {
+                    "type": "Delegated",
+                    "name": "ChannelMeetingParticipant.Read.Group"
+                }
+            ]
+        }
+    },
+    "defaultInstallScope": "groupchat",
+    "defaultGroupCapability": {
+        "team": "bot",
+        "groupchat": "bot"
+    }
+}
