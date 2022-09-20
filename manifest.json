@@ -2,7 +2,7 @@
     "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
     "manifestVersion": "1.14",
     "version": "1.0.0",
-    "id": "%MICROSOFT-APP-ID%",
+    "id": "c1a18b2e-8909-469d-bc24-3be7183e6438",
     "packageName": "fyi.lukas.frank",
     "localizationInfo": {
         "defaultLanguageTag": "sv-se"
@@ -11,7 +11,7 @@
         "name": "Lukas Klingsbo",
         "websiteUrl": "https://lukas.fyi/",
         "privacyUrl": "https://lukas.fyi/",
-        "termsOfUseUrl": "https://lukas.fyi/",
+        "termsOfUseUrl": "https://lukas.fyi/"
     },
     "name": {
         "short": "Frank",
@@ -22,13 +22,13 @@
         "full": "Frank will tell you what lunch that is served in Sabis today and tomorrow."
     },
     "icons": {
-        "outline": "frank_transparent.png",
+        "outline": "frank-transparent.png",
         "color": "frank.png"
     },
     "accentColor": "#33c7ff",
     "bots": [
         {
-            "botId": "%MICROSOFT-APP-ID-REGISTERED-WITH-BOT-FRAMEWORK%",
+            "botId": "c1a18b2e-8909-469d-bc24-3be7183e6438",
             "scopes": [
                 "team",
                 "personal",
