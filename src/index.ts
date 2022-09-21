@@ -72,8 +72,15 @@ adapter.onTurnError = onTurnErrorHandler;
 const myBot = new FrankBot();
 
 // Listen for incoming requests on root.
- server.get('/', function (req, res, next) {
-    res.send({ body: 'I am alive.' });
+server.get('/', function (req, res, next) {
+    res.send({
+        body: 'I am alive.',
+
+        MicrosoftAppId: process.env.MicrosoftAppId,
+        MicrosoftAppPassword: process.env.MicrosoftAppPassword,
+        MicrosoftAppType: process.env.MicrosoftAppType,
+        MicrosoftAppTenantId: process.env.MicrosoftAppTenantId
+    });
     next();
  });
 
