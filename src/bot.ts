@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ActivityHandler, MessageFactory, TurnContext } from 'botbuilder';
 import { MESSAGES_PATH } from 'botbuilder/lib/streaming';
 import { parse } from 'node-html-parser';
-import { getEmoji } from 'get-random-emoji';
+import randomEmoji = require('@sefinek/random-emoji');
 
 const url = 'https://www.sabis.se/restauranger-cafeer/vara-foretagsrestauranger/skandia/';
 const AxiosInstance = axios.create();
@@ -52,8 +52,7 @@ export class FrankBot extends ActivityHandler {
                     'back-end och front-end.';
                 await this.sendMessage(context, replyText);
             } else {
-                //const replyText = `${getRandomElement(yesNoWords)} ${getEmoji()}`;
-                const replyText = getRandomElement(yesNoWords);
+                const replyText = `${getRandomElement(yesNoWords)} ${randomEmoji.emojis()}`;
                 await this.sendMessage(context, replyText);
             }
             await next();
