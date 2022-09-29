@@ -34,16 +34,17 @@ export class EchoBot extends ActivityHandler {
         });
 
         this.onMembersAdded(async (context, next) => {
-            const members = context.activity.membersAdded
-                .filter((m) => m.id !== context.activity.recipient.id)
-                .map((m) => m.name);
+            const isFrank = context.activity.membersAdded
+                .filter((m) => m.name === 'Frank').length < 0;
             const welcomeText =
                 `Goddagens, jag heter Frank och kan ` +
                 `svara på vad Sabis serverar för lunch idag genom att ` +
                 `du frågar mig "Lunch?".`;
-            await context.sendActivity(
-                MessageFactory.text(welcomeText, welcomeText)
-            );
+            if (isFrank) {
+                await context.sendActivity(
+                    MessageFactory.text(welcomeText, welcomeText)
+                );
+            }
             await next();
         });
     }
