@@ -16,9 +16,8 @@ export class EchoBot extends ActivityHandler {
         this.onMessage(async (context, next) => {
             const message = context.activity.text.toLowerCase();
             const words = message.replace(/\?|!/g, '').split(' ');
-            if (message.startsWith("lunch") && words.length < 3) {
-                const offset = words.length < 2 ? 0 :
-                    (words[1] === 'imorgon' ? 1 : 0);
+            if (message.includes('lunch') && words.length < 6) {
+                const offset = message.includes('imorgon') ? 1 : 0;
                 const isToday = offset == 0;
                 const lunchText = await this.fetchLunch(offset);
                 const date = new Date();
@@ -39,7 +38,7 @@ export class EchoBot extends ActivityHandler {
                 .filter((m) => m.id !== context.activity.recipient.id)
                 .map((m) => m.name);
             const welcomeText =
-                `Goddagens ${members.join(', ')}, jag heter Frank och kan ` +
+                `Goddagens, jag heter Frank och kan ` +
                 `svara på vad Sabis serverar för lunch idag genom att ` +
                 `du frågar mig "Lunch?".`;
             await context.sendActivity(
