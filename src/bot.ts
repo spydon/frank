@@ -52,7 +52,9 @@ export class FrankBot extends ActivityHandler {
                     'back-end och front-end.';
                 await this.sendMessage(context, replyText);
             } else {
-                await this.sendMessage(context, `${getRandomElement(yesNoWords)} ${getEmoji()}`);
+                //const replyText = `${getRandomElement(yesNoWords)} ${getEmoji()}`;
+                const replyText = getRandomElement(yesNoWords);
+                await this.sendMessage(context, replyText);
             }
             await next();
         });
