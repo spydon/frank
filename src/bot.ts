@@ -1,6 +1,8 @@
 import axios from 'axios';
-import { ActivityHandler, MessageFactory } from 'botbuilder';
+import { ActivityHandler, MessageFactory, TurnContext } from 'botbuilder';
+import { MESSAGES_PATH } from 'botbuilder/lib/streaming';
 import { parse } from 'node-html-parser';
+import { getEmoji } from 'get-random-emoji';
 
 const url = 'https://www.sabis.se/restauranger-cafeer/vara-foretagsrestauranger/skandia/';
 const AxiosInstance = axios.create();
@@ -10,13 +12,30 @@ const iconMap = {
     'icon--farmers-choice': '🧑‍🌾'
 };
 
-export class EchoBot extends ActivityHandler {
+const yesNoWords = [
+    'Ja?', 'Nej.', 'Nja.', 'Säger du det så.', 'Är det inte dags för dig att jobba lite?', 'Absolut.',
+    'Lugn nu.', 'Javisst!', 'Någon tycker säkert att det är så i alla fall.'
+];
+
+const getRandomElement = (arr: any[]) =>
+    arr[Math.floor(Math.random() * arr.length)]
+
+
+export class FrankBot extends ActivityHandler {
     constructor() {
         super();
         this.onMessage(async (context, next) => {
             const message = context.activity.text.toLowerCase();
             const words = message.replace(/\?|!/g, '').split(' ');
-            if (message.includes('lunch') && words.length < 6) {
+            if (message.includes('ritrovo')) {
+                const replyText = 'Ritrovo har pizza, pasta, sallader, mackor och bra kaffe, ' +
+                    'samma som alltid.';
+                await this.sendMessage(context, replyText);
+            } else if (message.includes('fika')) {
+                const replyText =
+                    'Fikapauser är att rekommendera, för mycket kod såsar ihop hjärnkontoret.';
+                await this.sendMessage(context, replyText);
+            } else if (message.includes('lunch') && words.length < 6) {
                 const offset = message.includes('imorgon') ? 1 : 0;
                 const isToday = offset == 0;
                 const lunchText = await this.fetchLunch(offset);
@@ -26,9 +45,14 @@ export class EchoBot extends ActivityHandler {
                 const dayWord = isToday ? 'Idag' : 'Imorgon';
                 const replyText = `${dayWord} (${dayOfWeek}) så serveras det:\n\n` +
                     lunchText;
-                await context.sendActivity(
-                    MessageFactory.text(replyText, replyText)
-                );
+                await this.sendMessage(context, replyText);
+            } else if (message.includes('team')) {
+                const replyText =
+                    'Om du frågar mig så är det definitivt mest effektivt att splitta teamet på' +
+                    'back-end och front-end.';
+                await this.sendMessage(context, replyText);
+            } else {
+                await this.sendMessage(context, `${getRandomElement(yesNoWords)} ${getEmoji()}`);
             }
             await next();
         });
@@ -41,12 +65,16 @@ export class EchoBot extends ActivityHandler {
                 `svara på vad Sabis serverar för lunch idag genom att ` +
                 `du frågar mig "Lunch?".`;
             if (isFrank) {
-                await context.sendActivity(
-                    MessageFactory.text(welcomeText, welcomeText)
-                );
+                await this.sendMessage(context, welcomeText);
             }
             await next();
         });
+    }
+
+    private sendMessage(context: TurnContext, message: string) {
+        return context.sendActivity(
+            MessageFactory.text(message, message)
+        );
     }
 
     fetchLunch(offset: number = 0): Promise<any> {
@@ -65,7 +93,7 @@ export class EchoBot extends ActivityHandler {
                         .map((e) => e[0].getElementsByTagName('li'));
                     // Starts counting on Sunday.
                     const dayOfWeek = new Date().getDay();
-                    if (dayOfWeek == 0 || dayOfWeek == 6) {
+                    if (dayOfWeek + offset == 0 || dayOfWeek + offset == 6) {
                         return 'Gå hem, det är helg.';
                     }
                     const dayData = liDays[dayOfWeek - 1 + offset];

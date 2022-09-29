@@ -20,7 +20,7 @@ import {
 } from 'botbuilder';
 
 // This bot's main dialog.
-import { EchoBot as FrankBot } from './bot';
+import { FrankBot as FrankBot } from './bot';
 
 // Create HTTP server.
 const server = restify.createServer();
