@@ -35,6 +35,9 @@ export class FrankBot extends ActivityHandler {
                 const replyText =
                     'Fikapauser är att rekommendera, för mycket kod såsar ihop hjärnkontoret.';
                 await this.sendMessage(context, replyText);
+            } else if (message.includes('simon')) {
+                const replyText = `Simon är en ${emojis.random({n: 1})[0]}, det vet alla.`;
+                await this.sendMessage(context, replyText);
             } else if (message.includes('lunch') && words.length < 6) {
                 const offset = message.includes('imorgon') ? 1 : 0;
                 const isToday = offset == 0;
