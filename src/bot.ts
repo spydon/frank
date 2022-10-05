@@ -12,13 +12,52 @@ const iconMap = {
     'icon--farmers-choice': '🧑‍🌾'
 };
 
-const yesNoWords = [
+const yesNoReplies = [
     'Ja?', 'Nej.', 'Nja.', 'Säger du det så.', 'Är det inte dags för dig att jobba lite?', 'Absolut.',
-    'Lugn nu.', 'Javisst!', 'Någon tycker säkert att det är så i alla fall.'
+    'Lugn nu.', 'Javisst!', 'Någon tycker säkert att det är så i alla fall.', 'Vad tycker du?',
+    'Lyssna på <name> istället, jag vet ingenting.',
+    'Det kan vara så, i vilket fall så är det nog <name>\'s fel.',
+    'Ja för att tänka fritt är stort, men att tänka som <name> är större.',
+    'Strunta i den frågan, dags att fika! Eller vad säger du <name>?',
+    'Så sant som att <noun> är en delikatess för <name>.'
 ];
+
+const nameReplies = [
+    'Definitivt <name>.', 'Man skulle kunna tro att det är <name> som ligger bakom alltid.',
+    'Den vise <name>, som jag brukar säga.', '<name> =', 'Ole dole doff <name>.',
+    '<name> kommer en vacker dag att resa på en <noun> till kontoret.',
+    'Vad det blir för lunch? <name> kommer i alla fall att äta en <noun>.'
+]
+
+const names = [
+    'Lukas', 'Jörgen', 'Simon', 'UX-Jörgen', 'Abdi', 'Teddy', 'Jocke', 'Frida', 'Lars', 'Tor',
+    'Fredrik', 'Tobias', 'Petrus', 'Johan', 'Anders', 'Rickard', 'John', 'Johannes', 'Frank'
+];
+
+// Substantiv (en)
+const nouns = [
+    'elefant', 'get', 'gås', 'fiskmås', 'hummer', 'hamster', 'gospelkör', 'helikopter',
+    'valross', 'stol', 'kaviartub', 'lampa', 'kreditkort', 'mobil', 'flygande matta',
+    'båt'
+]
+
+const replaceName = (text: string, name: string) => 
+    text.replace('<name>', name);
+
+const replaceNoun = (text: string, noun: string) => 
+    text.replace('<noun>', noun);
+
+const containedNames = (text: string): string[] =>
+    names.filter((name) => text.includes(name));
 
 const getRandomElement = (arr: any[]) =>
     arr[Math.floor(Math.random() * arr.length)]
+
+const replaceAll = (text: string, name: string, noun: string) => {
+    name = name != null ? name : getRandomElement(names);
+    noun = noun != null ? noun : getRandomElement(nouns);
+    return replaceName(replaceNoun(text, noun), name);
+}
 
 
 export class FrankBot extends ActivityHandler {
@@ -34,9 +73,6 @@ export class FrankBot extends ActivityHandler {
             } else if (message.includes('fika')) {
                 const replyText =
                     'Fikapauser är att rekommendera, för mycket kod såsar ihop hjärnkontoret.';
-                await this.sendMessage(context, replyText);
-            } else if (message.includes('simon')) {
-                const replyText = `Simon är en ${emojis.random({n: 1})[0]}, det vet alla.`;
                 await this.sendMessage(context, replyText);
             } else if (message.includes('lunch') && words.length < 6) {
                 const offset = message.includes('imorgon') ? 1 : 0;
@@ -54,8 +90,19 @@ export class FrankBot extends ActivityHandler {
                     'Om du frågar mig så är det definitivt mest effektivt att splitta teamet på' +
                     'back-end och front-end.';
                 await this.sendMessage(context, replyText);
-            } else {
-                const replyText = `${getRandomElement(yesNoWords)} ${emojis.random({n: 1})[0]}`;
+            } else if (message.includes('vem') || containedNames(message).length > 0) {
+                const emoji = emojis.random({n: 1})[0];
+                const mentionedNames = containedNames(message);
+                const name = mentionedNames.length > 0 ? mentionedNames[1] : null;
+                const text = replaceAll(getRandomElement(nameReplies), name, null);
+                const replyText = `${text} ${emoji}`;
+                await this.sendMessage(context, replyText);
+            } else if (message.includes('?')) {
+                const emoji = emojis.random({n: 1})[0];
+                const mentionedNames = containedNames(message);
+                const name = mentionedNames.length > 0 ? mentionedNames[1] : getRandomElement(names);
+                const text = replaceAll(getRandomElement(yesNoReplies), name, null);
+                const replyText = `${text} ${emoji}`;
                 await this.sendMessage(context, replyText);
             }
             await next();
