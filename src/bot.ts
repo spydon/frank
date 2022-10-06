@@ -51,12 +51,10 @@ const containedNames = (text: string): string[] =>
     names.filter((name) => text.includes(name.toLowerCase()));
 
 const getRandomElement = (arr: any[]) =>
-    arr[Math.floor(Math.random() * arr.length)]
+    arr[Math.floor(Math.random() * arr.length)];
 
-const getRandomEmoji = () => {
-    const emoji = emojis.random({n: 1})[0];
-
-}
+const randomEmoji = () => 
+    emojis.random({n: 1, nogroup: 'Flags'})[0];
 
 const replaceAll = (text: string, name: string, noun: string) => {
     name = name != null ? name : getRandomElement(names);
@@ -100,18 +98,16 @@ export class FrankBot extends ActivityHandler {
                     'back-end och front-end.';
                 await this.sendMessage(context, replyText);
             } else if (message.includes('vem') || containedNames.length > 0) {
-                const emoji = emojis.random({n: 1})[0];
                 const mentionedNames = containedNames(message);
                 const name = mentionedNames.length > 0 ? mentionedNames[0] : null;
                 const text = replaceAll(getRandomElement(nameReplies), name, null);
-                const replyText = `${text} ${emoji}`;
+                const replyText = `${text} ${randomEmoji()}`;
                 await this.sendMessage(context, replyText);
             } else if (message.includes('?')) {
-                const emoji = emojis.random({n: 1})[0];
                 const mentionedNames = containedNames(message);
                 const name = mentionedNames.length > 0 ? mentionedNames[0] : getRandomElement(names);
                 const text = replaceAll(getRandomElement(yesNoReplies), name, null);
-                const replyText = `${text} ${emoji}`;
+                const replyText = `${text} ${randomEmoji()}`;
                 await this.sendMessage(context, replyText);
             }
             await next();
