@@ -99,7 +99,7 @@ export class FrankBot extends ActivityHandler {
                     'Om du frågar mig så är det definitivt mest effektivt att splitta teamet på' +
                     'back-end och front-end.';
                 await this.sendMessage(context, replyText);
-            } else if (message.includes('vem')) {
+            } else if (message.includes('vem') || containedNames.length > 0) {
                 const emoji = emojis.random({n: 1})[0];
                 const mentionedNames = containedNames(message);
                 const name = mentionedNames.length > 0 ? mentionedNames[0] : null;
