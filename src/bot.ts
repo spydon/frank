@@ -31,7 +31,7 @@ const nameReplies = [
 
 const names = [
     'Lukas', 'Jörgen', 'Simon', 'UX-Jörgen', 'Abdi', 'Teddy', 'Jocke', 'Frida', 'Lars', 'Tor',
-    'Fredrik', 'Tobias', 'Petrus', 'Johan', 'Anders', 'Rickard', 'John', 'Johannes', 'Frank'
+    'Fredrik', 'Tobias', 'Petrus', 'Johan', 'Anders', 'Rickard', 'John', 'Johannes'
 ];
 
 // Substantiv (en)
