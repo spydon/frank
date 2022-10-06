@@ -48,7 +48,7 @@ const replaceNoun = (text: string, noun: string) =>
     text.replace('<noun>', noun);
 
 const containedNames = (text: string): string[] =>
-    names.filter((name) => text.includes(name));
+    names.filter((name) => text.includes(name.toLowerCase()));
 
 const getRandomElement = (arr: any[]) =>
     arr[Math.floor(Math.random() * arr.length)]
@@ -100,7 +100,7 @@ export class FrankBot extends ActivityHandler {
             } else if (message.includes('?')) {
                 const emoji = emojis.random({n: 1})[0];
                 const mentionedNames = containedNames(message);
-                const name = mentionedNames.length > 0 ? mentionedNames[1] : getRandomElement(names);
+                const name = mentionedNames.length > 0 ? mentionedNames[0] : getRandomElement(names);
                 const text = replaceAll(getRandomElement(yesNoReplies), name, null);
                 const replyText = `${text} ${emoji}`;
                 await this.sendMessage(context, replyText);
