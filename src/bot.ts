@@ -53,6 +53,11 @@ const containedNames = (text: string): string[] =>
 const getRandomElement = (arr: any[]) =>
     arr[Math.floor(Math.random() * arr.length)]
 
+const getRandomEmoji = () => {
+    const emoji = emojis.random({n: 1})[0];
+
+}
+
 const replaceAll = (text: string, name: string, noun: string) => {
     name = name != null ? name : getRandomElement(names);
     noun = noun != null ? noun : getRandomElement(nouns);
@@ -73,6 +78,10 @@ export class FrankBot extends ActivityHandler {
             } else if (message.includes('fika')) {
                 const replyText =
                     'Fikapauser är att rekommendera, för mycket kod såsar ihop hjärnkontoret.';
+                await this.sendMessage(context, replyText);
+            }  else if (message.includes('phils') || message.includes("phil's")) {
+                const replyText =
+                    'De serverar alltid handburgare, man äter dem med händerna.';
                 await this.sendMessage(context, replyText);
             } else if (message.includes('lunch') && words.length < 6) {
                 const offset = message.includes('imorgon') ? 1 : 0;
