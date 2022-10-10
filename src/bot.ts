@@ -23,9 +23,10 @@ const yesNoReplies = [
 ];
 
 const nameReplies = [
-    'Definitivt <name>.', 'Man skulle kunna tro att det är <name> som ligger bakom alltid.',
+    'Definitivt <name>.', 'Man skulle kunna tro att det är <name> som ligger bakom allting.',
     'Den vise <name>, som jag brukar säga.', '<name> =', 'Ole dole doff <name>.',
     '<name> kommer en vacker dag att resa på en <noun> till kontoret.',
+    "Det vet jag inte, men <name>'s dröm husdjur är i alla fall en <noun>.",
     'Vad det blir för lunch? <name> kommer i alla fall att äta en <noun>.'
 ]
 
@@ -38,7 +39,7 @@ const names = [
 const nouns = [
     'elefant', 'get', 'gås', 'fiskmås', 'hummer', 'hamster', 'gospelkör', 'helikopter',
     'valross', 'stol', 'kaviartub', 'lampa', 'kreditkort', 'mobil', 'flygande matta',
-    'båt'
+    'båt', 'fläskig dam'
 ]
 
 const replaceName = (text: string, name: string) => 
@@ -97,7 +98,7 @@ export class FrankBot extends ActivityHandler {
                     'Om du frågar mig så är det definitivt mest effektivt att splitta teamet på' +
                     'back-end och front-end.';
                 await this.sendMessage(context, replyText);
-            } else if (message.includes('vem') || containedNames.length > 0) {
+            } else if (message.includes('vem')) {
                 const mentionedNames = containedNames(message);
                 const name = mentionedNames.length > 0 ? mentionedNames[0] : null;
                 const text = replaceAll(getRandomElement(nameReplies), name, null);
