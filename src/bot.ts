@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ActivityHandler, MessageFactory, TurnContext } from 'botbuilder';
+import { ActivityHandler, MessageFactory, SkillHandler, TurnContext } from 'botbuilder';
 import { MESSAGES_PATH } from 'botbuilder/lib/streaming';
 import { parse } from 'node-html-parser';
 import emojis = require('emoji-random-list');
@@ -25,9 +25,13 @@ const yesNoReplies = [
 const nameReplies = [
     'Definitivt <name>.', 'Man skulle kunna tro att det är <name> som ligger bakom allting.',
     'Den vise <name>, som jag brukar säga.', '<name> =', 'Ole dole doff <name>.',
-    '<name> kommer en vacker dag att resa på en <noun> till kontoret.',
+    '<name> och en dag kommer det faktist resa en <noun> till kontoret.',
     "Det vet jag inte, men <name>'s dröm husdjur är i alla fall en <noun>.",
-    'Vad det blir för lunch? <name> kommer i alla fall att äta en <noun>.'
+    'Vad det blir för lunch? <name> kommer i alla fall att äta en <noun>.',
+    "Jag vet inte, men fråga <name>'s <noun>, den vet saker...",
+    '<name> och jag har en grej going, så jag passar på den.',
+    'Fråga <name> direkt istället.', 'En <noun> håller inga hemligheter om <name>.',
+    'Det var en gång en <noun>, och det var <name>.'
 ]
 
 const names = [
