@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ActivityHandler, MessageFactory, SkillHandler, TurnContext } from 'botbuilder';
+import { ActivityHandler, MessageFactory, TurnContext } from 'botbuilder';
 import { MESSAGES_PATH } from 'botbuilder/lib/streaming';
 import { parse } from 'node-html-parser';
 import emojis = require('emoji-random-list');
