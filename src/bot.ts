@@ -32,7 +32,19 @@ const nameReplies = [
     '<name> och jag har en grej going, så jag passar på den.',
     'Fråga <name> direkt istället.', 'En <noun> håller inga hemligheter om <name>.',
     'Det var en gång en <noun>, och det var <name>.'
-]
+];
+
+const fikaReplies = [
+    'Fikapauser är att rekommendera, för mycket kod såsar ihop hjärnkontoret.',
+    'Absolut fikadags! Är en <noun>.',
+    'Kalla det möte, men ät bullar. Det gör chefen hela tiden.',
+    'Om man skulle ta och vända på det istället? Vi kör fika som standard och ibland så jobbar vi också.',
+    'Mitt favotitfika är i alla fall <noun>!',
+    'Kör en <noun> i micron och käka, mycket protein har jag hört.',
+    'Om du först rider ner till ritrovo på en <noun>, då är du nog värd en fika sen kan jag tycka!',
+    'En <noun> till fikat, är den medbjuden eller ska den ätas?',
+    'En <noun> ner i en mixer bara, nyttigt och fettsnålt!',
+];
 
 const names = [
     'Johannes', 'Lukas', 'Jörgen', 'Simon', 'UX-Jörgen', 'Abdi', 'Teddy', 'Jocke', 'Frida', 'Lars',
@@ -42,9 +54,10 @@ const names = [
 // Substantiv (en)
 const nouns = [
     'elefant', 'get', 'gås', 'fiskmås', 'hummer', 'hamster', 'gospelkör', 'helikopter',
-    'valross', 'stol', 'kaviartub', 'lampa', 'kreditkort', 'mobil', 'flygande matta',
-    'båt', 'fläskig dam'
-]
+    'valross', 'stol', 'kaviartub', 'lampa', 'påse kreditkort', 'mobil', 'flygande matta',
+    'båt', 'fläskig dam', 'scout', 'fet gubbe', 'Trump', 'Putin', 'skolklass', 'skolfröken',
+    'häst och vagn'
+];
 
 const replaceName = (text: string, name: string) => 
     text.replace('<name>', name);
@@ -79,8 +92,11 @@ export class FrankBot extends ActivityHandler {
                     'samma som alltid.';
                 await this.sendMessage(context, replyText);
             } else if (message.includes('fika')) {
-                const replyText =
-                    'Fikapauser är att rekommendera, för mycket kod såsar ihop hjärnkontoret.';
+                const mentionedNames = containedNames(message);
+                const name = mentionedNames.length > 0 ? mentionedNames[0] : getRandomElement(names);
+                const text = replaceAll(getRandomElement(fikaReplies), name, null);
+                const replyText = `${text} ${randomEmoji()}`;
+                await this.sendMessage(context, replyText);
                 await this.sendMessage(context, replyText);
             }  else if (message.includes('phils') || message.includes("phil's")) {
                 const replyText =
