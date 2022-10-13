@@ -43,12 +43,13 @@ const fikaReplies = [
     'Kör en <noun> i micron och käka, mycket protein har jag hört.',
     'Om du först rider ner till ritrovo på en <noun>, då är du nog värd en fika sen kan jag tycka!',
     'En <noun> till fikat, är den medbjuden eller ska den ätas?',
+    'Ta med <name> till Ritrovo och dela på en <noun> vetja!',
     'En <noun> ner i en mixer bara, nyttigt och fettsnålt!'
 ];
 
 const names = [
     'Johannes', 'Lukas', 'Jörgen', 'Simon', 'UX-Jörgen', 'Abdi', 'Teddy', 'Jocke', 'Frida', 'Lars',
-    'Tor', 'Fredrik', 'Tobias', 'Petrus', 'Johan', 'Anders', 'Rickard', 'John'
+    'Tor', 'Fredrik', 'Tobias', 'Petrus', 'Johan', 'Anders', 'Rickard', 'John', 'Samuel'
 ];
 
 // Substantiv (en)
@@ -56,7 +57,8 @@ const nouns = [
     'elefant', 'get', 'gås', 'fiskmås', 'hummer', 'hamster', 'gospelkör', 'helikopter',
     'valross', 'stol', 'kaviartub', 'lampa', 'påse kreditkort', 'mobil', 'flygande matta',
     'båt', 'fläskig dam', 'scout', 'fet gubbe', 'Trump', 'Putin', 'skolklass', 'skolfröken',
-    'häst och vagn'
+    'häst och vagn', 'semla', '12 centimeters drake', 'begagnad macka ifrån dagis',
+    'vante', 'ölbricka', 'shotbricka'
 ];
 
 const replaceName = (text: string, name: string) => 
