@@ -43,7 +43,7 @@ const fikaReplies = [
     'Kör en <noun> i micron och käka, mycket protein har jag hört.',
     'Om du först rider ner till ritrovo på en <noun>, då är du nog värd en fika sen kan jag tycka!',
     'En <noun> till fikat, är den medbjuden eller ska den ätas?',
-    'En <noun> ner i en mixer bara, nyttigt och fettsnålt!',
+    'En <noun> ner i en mixer bara, nyttigt och fettsnålt!'
 ];
 
 const names = [
@@ -96,7 +96,6 @@ export class FrankBot extends ActivityHandler {
                 const name = mentionedNames.length > 0 ? mentionedNames[0] : getRandomElement(names);
                 const text = replaceAll(getRandomElement(fikaReplies), name, null);
                 const replyText = `${text} ${randomEmoji()}`;
-                await this.sendMessage(context, replyText);
                 await this.sendMessage(context, replyText);
             }  else if (message.includes('phils') || message.includes("phil's")) {
                 const replyText =
