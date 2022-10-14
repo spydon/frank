@@ -61,6 +61,14 @@ const nouns = [
     'vante', 'ölbricka', 'shotbricka'
 ];
 
+const factReplies = [
+    'Icke existerande frågor, får icke-existerande svar; <noun>.',
+    'Mycket bra konstaterande!',
+    'Tror faktiskt att du har fel där.',
+    'Flat-earther!',
+    'Ingenting är säkert, förutom att <name> är en <noun>.'
+];
+
 const replaceName = (text: string, name: string) => 
     text.replace('<name>', name);
 
@@ -94,11 +102,7 @@ export class FrankBot extends ActivityHandler {
                     'samma som alltid.';
                 await this.sendMessage(context, replyText);
             } else if (message.includes('fika')) {
-                const mentionedNames = containedNames(message);
-                const name = mentionedNames.length > 0 ? mentionedNames[0] : getRandomElement(names);
-                const text = replaceAll(getRandomElement(fikaReplies), name, null);
-                const replyText = `${text} ${randomEmoji()}`;
-                await this.sendMessage(context, replyText);
+                await this.sendReply(context, message, fikaReplies);
             }  else if (message.includes('phils') || message.includes("phil's")) {
                 const replyText =
                     'De serverar alltid handburgare, man äter dem med händerna.';
@@ -118,19 +122,13 @@ export class FrankBot extends ActivityHandler {
                 const replyText =
                     'Om du frågar mig så är det definitivt mest effektivt att splitta teamet på' +
                     'back-end och front-end.';
-                await this.sendMessage(context, replyText);
+                await this.sendReply(context, message, [replyText]);
             } else if (message.includes('vem')) {
-                const mentionedNames = containedNames(message);
-                const name = mentionedNames.length > 0 ? mentionedNames[0] : null;
-                const text = replaceAll(getRandomElement(nameReplies), name, null);
-                const replyText = `${text} ${randomEmoji()}`;
-                await this.sendMessage(context, replyText);
+                await this.sendReply(context, message, nameReplies);
             } else if (message.includes('?')) {
-                const mentionedNames = containedNames(message);
-                const name = mentionedNames.length > 0 ? mentionedNames[0] : getRandomElement(names);
-                const text = replaceAll(getRandomElement(yesNoReplies), name, null);
-                const replyText = `${text} ${randomEmoji()}`;
-                await this.sendMessage(context, replyText);
+                await this.sendReply(context, message, yesNoReplies);
+            } else {
+                await this.sendReply(context, message, factReplies);
             }
             await next();
         });
@@ -149,10 +147,16 @@ export class FrankBot extends ActivityHandler {
         });
     }
 
-    private sendMessage(context: TurnContext, message: string) {
-        return context.sendActivity(
-            MessageFactory.text(message, message)
-        );
+    private sendMessage(context: TurnContext, reply: string) {
+        return context.sendActivity(MessageFactory.text(reply, reply));
+    }
+
+    private sendReply(context: TurnContext, message: string, replyList: string[]) {
+        const mentionedNames = containedNames(message);
+        const name = mentionedNames.length > 0 ? mentionedNames[0] : getRandomElement(names);
+        const text = replaceAll(getRandomElement(replyList), name, null);
+        const reply = `${text} ${randomEmoji()}`;
+        return context.sendActivity(MessageFactory.text(reply, reply));
     }
 
     fetchLunch(offset: number = 0): Promise<any> {
