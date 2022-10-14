@@ -19,7 +19,7 @@ const yesNoReplies = [
     'Det kan vara så, i vilket fall så är det nog <name>\'s fel.',
     'Ja för att tänka fritt är stort, men att tänka som <name> är större.',
     'Strunta i den frågan, dags att fika! Eller vad säger du <name>?',
-    'Så sant som att <noun> är en delikatess för <name>.'
+    'Så sant som att en <noun> är en delikatess för <name>.'
 ];
 
 const nameReplies = [
@@ -85,9 +85,12 @@ const randomEmoji = () =>
     emojis.random({n: 1, nogroup: 'Flags'})[0];
 
 const replaceAll = (text: string, name: string, noun: string) => {
+    if(!text.includes('<')) {
+        return text;
+    }
     name = name != null ? name : getRandomElement(names);
     noun = noun != null ? noun : getRandomElement(nouns);
-    return replaceName(replaceNoun(text, noun), name);
+    return replaceAll(replaceName(replaceNoun(text, noun), name), null, null);
 }
 
 
