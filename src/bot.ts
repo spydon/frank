@@ -86,7 +86,7 @@ const getRandomElement = (arr: any[]) =>
     arr[Math.floor(Math.random() * arr.length)];
 
 const randomEmoji = () => 
-    emojis.random({n: 1, nogroup: 'Flags'})[0];
+    emojis.random({n: 1, nogroup: 'Flags,Symbols'})[0];
 
 const replaceAll = (text: string, name: string, noun: string) => {
     if(!text.includes('<')) {
