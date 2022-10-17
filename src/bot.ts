@@ -66,7 +66,11 @@ const factReplies = [
     'Mycket bra konstaterande!',
     'Tror faktiskt att du har fel där.',
     'Flat-earther!',
-    'Ingenting är säkert, förutom att <name> är en <noun>.'
+    'Ingenting är säkert, förutom att <name> är en <noun>.',
+    'Bra sagt, vill bara passa på att varna för blixthalka pga en utsmetad <noun>.',
+    '<noun> + <noun> = ',
+    '<name> + <noun> = ',
+    '<name> + <name> = '
 ];
 
 const replaceName = (text: string, name: string) => 
@@ -158,7 +162,7 @@ export class FrankBot extends ActivityHandler {
         const mentionedNames = containedNames(message);
         const name = mentionedNames.length > 0 ? mentionedNames[0] : getRandomElement(names);
         const text = replaceAll(getRandomElement(replyList), name, null);
-        const reply = `${text} ${randomEmoji()}`;
+        const reply = `${text} ${randomEmoji()} `;
         return context.sendActivity(MessageFactory.text(reply, reply));
     }
 
