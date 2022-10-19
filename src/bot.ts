@@ -74,7 +74,8 @@ const factReplies = [
     'Great bots think alike, eller hur <name>?',
     '<name> tänker för mycket.',
     '<name> tänker för mycket lite, lite som en <noun>.',
-    'Tror nog att <name> och <name> är samma person, och egentligen inte en person, mer en <noun>.'
+    'Tror nog att <name> och <name> är samma person, och egentligen inte en person, mer en <noun>.',
+    'Petrus-gropen, nu!'
 ];
 
 const replaceName = (text: string, name: string) => 
