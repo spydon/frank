@@ -58,7 +58,7 @@ const nouns = [
     'valross', 'stol', 'kaviartub', 'lampa', 'påse kreditkort', 'mobil', 'flygande matta',
     'båt', 'fläskig dam', 'scout', 'fet gubbe', 'Trump', 'Putin', 'skolklass', 'skolfröken',
     'häst och vagn', 'semla', '12 centimeters drake', 'begagnad macka ifrån dagis',
-    'vante', 'ölbricka', 'shotbricka'
+    'vante', 'ölbricka', 'shotbricka', 'lever'
 ];
 
 const factReplies = [
@@ -70,7 +70,11 @@ const factReplies = [
     'Bra sagt, vill bara passa på att varna för blixthalka pga en utsmetad <noun>.',
     '<noun> + <noun> = ',
     '<name> + <noun> = ',
-    '<name> + <name> = '
+    '<name> + <name> = ',
+    'Great bots think alike, eller hur <name>?',
+    '<name> tänker för mycket.',
+    '<name> tänker för mycket lite, lite som en <noun>.',
+    'Tror nog att <name> och <name> är samma person, och egentligen inte en person, mer en <noun>.'
 ];
 
 const replaceName = (text: string, name: string) => 
