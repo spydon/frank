@@ -26,7 +26,7 @@ const nameReplies = [
     'Definitivt <name>.', 'Man skulle kunna tro att det är <name> som ligger bakom allting.',
     'Den vise <name>, som jag brukar säga.', '<name> =', 'Ole dole doff <name>.',
     '<name> och en dag kommer det faktist resa en <noun> till kontoret.',
-    "Det vet jag inte, men <name>'s dröm husdjur är i alla fall en <noun>.",
+    "Det vet jag inte, men <name>'s dröm-husdjur är i alla fall en <noun>.",
     'Vad det blir för lunch? <name> kommer i alla fall att äta en <noun>.',
     "Jag vet inte, men fråga <name>'s <noun>, den vet saker...",
     '<name> och jag har en grej going, så jag passar på den.',
@@ -132,7 +132,7 @@ export class FrankBot extends ActivityHandler {
                 await this.sendMessage(context, replyText);
             } else if (message.includes('team')) {
                 const replyText =
-                    'Om du frågar mig så är det definitivt mest effektivt att splitta teamet på' +
+                    'Om du frågar mig så är det definitivt mest effektivt att splitta teamet på ' +
                     'back-end och front-end.';
                 await this.sendReply(context, message, [replyText]);
             } else if (message.includes('vem')) {
