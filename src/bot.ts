@@ -48,8 +48,8 @@ const fikaReplies = [
 ];
 
 const names = [
-    'Johannes', 'Lukas', 'Jörgen', 'Simon', 'UX-Jörgen', 'Abdi', 'Teddy', 'Jocke', 'Frida', 'Lars',
-    'Tor', 'Fredrik', 'Tobias', 'Petrus', 'Johan', 'Anders', 'Rickard', 'John', 'Samuel'
+    'Johannes', 'Lukas', 'Simon', 'UX-Jörgen', 'Jörgen', 'Abdi', 'Teddy', 'Jocke', 'Frida', 'Lars',
+    'Tor', 'Fredrik', 'Tobias', 'Petrus', 'Johan', 'Anders', 'Rickard', 'John', 'Samuel', 'Sofie'
 ];
 
 // Substantiv (en)
