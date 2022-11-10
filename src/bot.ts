@@ -22,6 +22,12 @@ const yesNoReplies = [
     'Så sant som att en <noun> är en delikatess för <name>.'
 ];
 
+const whenReplies = [
+    'Nu.', 'Imorgon.', 'Aldrig, om du frågar mig, vilket du gjorde.', 'Den dagen en <noun> är en <noun>.',
+    'Rätt säker på att det blir det här årtiondet i alla fall!', 'På momomongen!',
+    'Hade en <noun> prokrastinerat med det?'
+]
+
 const nameReplies = [
     'Definitivt <name>.', 'Man skulle kunna tro att det är <name> som ligger bakom allting.',
     'Den vise <name>, som jag brukar säga.', '<name> =', 'Ole dole doff <name>.',
@@ -135,6 +141,8 @@ export class FrankBot extends ActivityHandler {
                     'Om du frågar mig så är det definitivt mest effektivt att splitta teamet på ' +
                     'back-end och front-end.';
                 await this.sendReply(context, message, [replyText]);
+            } else if (message.includes('när')) {
+                await this.sendReply(context, message, whenReplies);
             } else if (message.includes('vem')) {
                 await this.sendReply(context, message, nameReplies);
             } else if (message.includes('?')) {
