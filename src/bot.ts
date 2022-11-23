@@ -28,6 +28,11 @@ const whenReplies = [
     'Hade en <noun> prokrastinerat med det?'
 ]
 
+const whereReplies = [
+    'I Sabis.', 'I Ritrovo.', 'Hemma hos <name>!', "Vart som helst förutom i <name>'s källare!",
+    'På taket.', 'Nivå22?', 'T-Centralen.', 'Vi går till ett zoo och hittar buren för en <noun>!'
+]
+
 const nameReplies = [
     'Definitivt <name>.', 'Man skulle kunna tro att det är <name> som ligger bakom allting.',
     'Den vise <name>, som jag brukar säga.', '<name> =', 'Ole dole doff <name>.',
@@ -42,7 +47,7 @@ const nameReplies = [
 
 const fikaReplies = [
     'Fikapauser är att rekommendera, för mycket kod såsar ihop hjärnkontoret.',
-    'Absolut fikadags! Är en <noun>.',
+    'Absolut fikadags! Blir en <noun> till fika idag.',
     'Kalla det möte, men ät bullar. Det gör chefen hela tiden.',
     'Om man skulle ta och vända på det istället? Vi kör fika som standard och ibland så jobbar vi också.',
     'Mitt favotitfika är i alla fall <noun>!',
@@ -141,6 +146,8 @@ export class FrankBot extends ActivityHandler {
                     'Om du frågar mig så är det definitivt mest effektivt att splitta teamet på ' +
                     'back-end och front-end.';
                 await this.sendReply(context, message, [replyText]);
+            } else if (message.includes('var')) {
+                await this.sendReply(context, message, whereReplies);
             } else if (message.includes('när')) {
                 await this.sendReply(context, message, whenReplies);
             } else if (message.includes('vem')) {
