@@ -124,8 +124,6 @@ export class FrankBot extends ActivityHandler {
                 const replyText = 'Ritrovo har pizza, pasta, sallader, mackor och bra kaffe, ' +
                     'samma som alltid.';
                 await this.sendMessage(context, replyText);
-            } else if (message.includes('fika')) {
-                await this.sendReply(context, message, fikaReplies);
             }  else if (message.includes('phils') || message.includes("phil's")) {
                 const replyText =
                     'De serverar alltid handburgare, man äter dem med händerna.';
@@ -150,6 +148,8 @@ export class FrankBot extends ActivityHandler {
                 await this.sendReply(context, message, whereReplies);
             } else if (message.includes('när')) {
                 await this.sendReply(context, message, whenReplies);
+            } else if (message.includes('fika')) {
+                await this.sendReply(context, message, fikaReplies);
             } else if (message.includes('vem')) {
                 await this.sendReply(context, message, nameReplies);
             } else if (message.includes('?')) {
