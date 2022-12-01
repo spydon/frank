@@ -144,14 +144,14 @@ export class FrankBot extends ActivityHandler {
                     'Om du frågar mig så är det definitivt mest effektivt att splitta teamet på ' +
                     'back-end och front-end.';
                 await this.sendReply(context, message, [replyText]);
-            } else if (message.includes('var')) {
-                await this.sendReply(context, message, whereReplies);
             } else if (message.includes('när')) {
                 await this.sendReply(context, message, whenReplies);
             } else if (message.includes('fika')) {
                 await this.sendReply(context, message, fikaReplies);
             } else if (message.includes('vem')) {
                 await this.sendReply(context, message, nameReplies);
+            } else if (message.includes('var')) {
+                await this.sendReply(context, message, whereReplies);
             } else if (message.includes('?')) {
                 await this.sendReply(context, message, yesNoReplies);
             } else {
