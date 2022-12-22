@@ -131,7 +131,8 @@ export class FrankBot extends ActivityHandler {
             } else if (message.includes('lunch') && words.length < 6) {
                 const offset = message.includes('imorgon') ? 1 : 0;
                 const isToday = offset == 0;
-                const lunchText = await this.fetchLunch(offset);
+                // TODO: Remove +1
+                const lunchText = await this.fetchLunch(offset + 1);
                 const date = new Date();
                 date.setDate(date.getDate() + offset);
                 const dayOfWeek = date.toLocaleDateString('sv-SE', { weekday: 'long' });
