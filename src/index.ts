@@ -85,7 +85,7 @@ server.get('/', function (req, res, next) {
  });
 
 // Listen for incoming requests.
-server.post('/api/messages', async (req, res) => {
+server.post('/api/messages', async (req, res, _) => {
     // Route received a request to adapter for processing
     await adapter.process(req, res, (context) => myBot.run(context));
 });
