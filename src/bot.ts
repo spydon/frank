@@ -325,4 +325,3 @@ export class FrankBot extends ActivityHandler {
     }
 }
 
-
