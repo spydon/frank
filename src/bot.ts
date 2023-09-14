@@ -64,21 +64,15 @@ const funFactsKeywords = ['fakta', 'fact'];
 
 const funFactReplies = [
     'potatis är ursprungligen från Peru och dom har över 3000 sorter! 🇵🇪',
-    '26:e oktober är potatisens dag! 🥔',
-    'man kan faktiskt åka igenom ett svarthål utan att bli en nudel (spaghettifikation). Detta gäller såklart om hålet är tillräckligt stor, exempelvis ett supermassivt svart hål. 🌌',
-    'Australien har större diameter än månen. Månen har 3400 km i diameter och Australien har 4000 km 🌝',
+    '26:e oktober är potatisens dag i Sverige! 🥔',
     'Skottlands nationaldjur är en enhörning, true story! 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🦄',
     'i Schweiz är det förbjudet att endast äga en marsvin då dom är super sociala djur och att inte äga dom i par skulle anses vara djurplågeri. 🇨🇭 🐹 \nShout-out to Peru!👀',
-    'konsttävlingar var en gång en olympisk sport. Mellan 1912-1948 kunder man få medalj för konstverk som hade ankytningar inom målning, skulptur, musik, Litteratur, och arkitektur. 🎨',
-    'Jennifer Lopez inspirerade Google att skapa bildsökningsfunktionen, Google Images. Hennes outfit på 2000-talets Grammygalan var så eftersökt att Google kände behovet att implementera funktionen. 💃🏻',
+    'Jennifer Lopez inspirerade Google att skapa deras bildsökningsfunktion Google Images. Hennes outfit på 2000-talets Grammygalan var så eftersökt att Google kände behovet att implementera detta. 💃🏻',
     'brittiska stridsvagnar är utrustade för att kunna göra te. Sugen på te eller kaffe? Ingen problem, ta dig till din närmaste stridsvagn så fixar dom det. 🫖',
-    'en blåvalens hjärta väger ca 180kg och dess hjärtslag kan höras tre kilometer bort! 🐳',
     'drottningen Elizabeth II var en utbildad mekaniker. God bless the queen! 🧰',
     'Salvador Dalí designade loggan för Chupa Chups. 🍭',
-    'ketchup såldes, in the good old times runt 1834-talet, som medicin. Detta fick av din läkare om du hade dålig matsmältning. 🍅',
-    'definer ger varandra namn. Dom använder sig av ett unikt vissling för att identifiera var och en i gruppen. 🐬',
-    'i Game of Thrones så använde dom Ikea mattor för Nights Watch karaktärerna. 🗡️',
-    'på den gamla romerska riket så brukade man lägga rostat bröd i deras vinglas för en god hälsa. Därav, \"raise a toast!\". 🍞 🥂',
+    'ketchup såldes som medicin in the good old times runt 1834-talet. 🍅',
+    'definer ger varandra namn. Dom identifierar var och en i gruppen med ett unikt ljud. 🐬',
     'alla klockor i den fantastiska filmen Pulp Fiction visar 4:20. 🪴',
     'under hela ditt livstid äter du ungefär 70 olika typer av insekter och ca 10 spindlar. Bon appétit!🥣🕷️',
     'Harry Styles har fyra bröstvårtor? Nu vet du det, var så god! 👌👌 👌👌'
@@ -86,7 +80,7 @@ const funFactReplies = [
 
 const names = [
     'Johannes', 'Lukas', 'Simon', 'UX-Jörgen', 'Jörgen', 'Abdi', 'Teddy', 'Jocke', 'Lars',
-    'Tor', 'Fredrik', 'Tobias', 'Petrus', 'Johan', 'Anders', 'Samuel', 'Sofie', 'Zacke'
+    'Tor', 'Fredrik', 'Tobias', 'Petrus', 'Johan', 'Samuel', 'Sofie', 'Zacke'
 ];
 
 // Substantiv (en)
@@ -166,6 +160,9 @@ export class FrankBot extends ActivityHandler {
             } else if (message.includes('pisco')) {
                 const replyText = 'Pisco? Claro que si! Varje fredagkväll hos <name>';
                 await this.sendMessage(context, replaceName(replyText, getRandomElement(names)));
+            } else if (message.includes('potatis')) {
+                const replyText = 'Potatis är ursprungligen från Peru och dom har över 3000 sorter. Just saying! 🇵🇪';
+                await this.sendMessage(context, replyText);
             } else if (funFactsKeywords.some(str => message.includes(str))) {
                 const replyText = `Visste du att ${getRandomElement(funFactReplies)}`;
                 await this.sendMessage(context, replyText);
