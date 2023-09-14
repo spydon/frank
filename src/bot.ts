@@ -4,7 +4,6 @@ import { ActivityHandler, MessageFactory, TurnContext } from 'botbuilder';
 import { MESSAGES_PATH } from 'botbuilder/lib/streaming';
 import { parse } from 'node-html-parser';
 import emojis = require('emoji-random-list');
-import cld = require('cld');
 
 const url = 'https://www.sabis.se/restauranger-cafeer/vara-foretagsrestauranger/skandia/';
 const AxiosInstance = axios.create();
@@ -274,6 +273,7 @@ export class FrankBot extends ActivityHandler {
             ) {
                 return "es";
             }
+            const cld = require('cld');
             const result = await cld.detect(message);
             const languageName = result.languages[0].name;
             if (languageName == "SPANISH") {
@@ -324,4 +324,3 @@ export class FrankBot extends ActivityHandler {
         return parsed;
     }
 }
-
