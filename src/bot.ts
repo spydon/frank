@@ -164,7 +164,7 @@ export class FrankBot extends ActivityHandler {
                 const replyText = await this.getLunchTicket(message);
                 await this.sendMessage(context, replyText);
             } else if (message.includes('pisco')) {
-                const replyText = 'Pisco? Claro que si! Varje fredag kväll hos <name>';
+                const replyText = 'Pisco? Claro que si! Varje fredagkväll hos <name>';
                 await this.sendMessage(context, replaceName(replyText, getRandomElement(names)));
             } else if (funFactsKeywords.some(str => message.includes(str))) {
                 const replyText = `Visste du att ${getRandomElement(funFactReplies)}`;
@@ -271,17 +271,17 @@ export class FrankBot extends ActivityHandler {
             if (['espanol', 'español', 'spanska', 'spanish']
                 .some((keyword) => message.includes(keyword))
             ) {
-                return "es";
+                return 'es';
             }
             const cld = require('cld');
             const result = await cld.detect(message);
             const languageName = result.languages[0].name;
-            if (languageName == "SPANISH") {
-                return "es";
+            if (languageName == 'SPANISH') {
+                return 'es';
             }
-            return "sv";
+            return 'sv';
         } catch (error) {
-            return `sv`;
+            return 'sv';
         }
     }
 
