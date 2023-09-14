@@ -168,7 +168,7 @@ export class FrankBot extends ActivityHandler {
                 const replyText = 'Pisco? Claro que si! Varje fredag kväll hos <name>';
                 await this.sendMessage(context, replaceName(replyText, getRandomElement(names)));
             } else if (funFactsKeywords.some(str => message.includes(str))) {
-                const replyText = `Visste du att ${getRandomElement(funcFactReplies)}`;
+                const replyText = `Visste du att ${getRandomElement(funFactReplies)}`;
                 await this.sendMessage(context, replyText);
             } else if (message.includes('team')) {
                 const replyText =
