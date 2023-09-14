@@ -63,7 +63,7 @@ const fikaReplies = [
 
 const funFactsKeywords = ['fakta', 'fact'];
 
-const funcFactReplies = [
+const funFactReplies = [
     'potatis är ursprungligen från Peru och dom har över 3000 sorter! 🇵🇪',
     '26:e oktober är potatisens dag! 🥔',
     'man kan faktiskt åka igenom ett svarthål utan att bli en nudel (spaghettifikation). Detta gäller såklart om hålet är tillräckligt stor, exempelvis ett supermassivt svart hål. 🌌',
