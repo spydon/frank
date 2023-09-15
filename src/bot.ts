@@ -66,7 +66,7 @@ const funFactReplies = [
     'potatis är ursprungligen från Peru och dom har över 3000 sorter! 🇵🇪',
     '26:e oktober är potatisens dag i Sverige! 🥔',
     'Skottlands nationaldjur är en enhörning, true story! 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🦄',
-    'i Schweiz är det förbjudet att endast äga en marsvin då dom är super sociala djur och att inte äga dom i par skulle anses vara djurplågeri. 🇨🇭 🐹 \nShout-out to Peru!👀',
+    'i Schweiz är det förbjudet att endast äga ett marsvin då dom är super sociala djur och att inte äga dom i par skulle anses vara djurplågeri. 🇨🇭 🐹 \nShout-out to Peru!👀',
     'Jennifer Lopez inspirerade Google att skapa deras bildsökningsfunktion Google Images. Hennes outfit på 2000-talets Grammygalan var så eftersökt att Google kände behovet att implementera detta. 💃🏻',
     'brittiska stridsvagnar är utrustade för att kunna göra te. Sugen på te eller kaffe? Ingen problem, ta dig till din närmaste stridsvagn så fixar dom det. 🫖',
     'drottningen Elizabeth II var en utbildad mekaniker. God bless the queen! 🧰',
